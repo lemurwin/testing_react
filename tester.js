@@ -1,7 +1,16 @@
 
 class Test extends React.Component{
+
+
   render(){
-    return <h1>Hello World!</h1>;
+    var firebaseUser = firebase.database().ref('Pariah');
+    let userObject=undefined;
+    firebaseUser.on('value', function(snapshot){
+      userObject = snapshot.val();
+
+    });
+    console.log(userObject);
+    return <Game user={{userObject}}/>
   };
 };
 
